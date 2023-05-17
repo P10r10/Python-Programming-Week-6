@@ -1,4 +1,4 @@
-def helper(lst: list, op: str) -> list:  # input: list of lists containing integers
+def helper(lst: list, op: str):  # input: list of lists containing integers
     if op == "row_sums":
         return [sum(row) for row in lst]
     elif op == "matrix_sum":
