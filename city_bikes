@@ -1,0 +1,26 @@
+import math
+
+def get_station_data(filename: str) -> dict:
+    result = {}
+    with open(filename) as fp:
+        for row in fp:
+            split = row.split(";")
+            if split[0] != "Longitude":
+                result[split[3]] = (float(split[0]), float(split[1]))
+    return result
+
+
+def distance(stations: dict, station1: str, station2: str) -> float:
+    longitude1 = stations[station1][0]
+    longitude2 = stations[station2][0]
+    latitude1 = stations[station1][1]
+    latitude2 = stations[station2][1]
+    x_km = (longitude1 - longitude2) * 55.26
+    y_km = (latitude1 - latitude2) * 111.2
+    return math.sqrt(x_km**2 + y_km**2)
+    
+stations = get_station_data('stations1.csv')
+d = distance(stations, "Designmuseo", "Hietalahdentori")
+print(d)
+d = distance(stations, "Viiskulma", "Kaivopuisto")
+print(d)
