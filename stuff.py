@@ -15,6 +15,7 @@ guests.insert(len(guests) // 2, "Nicolaus Copernicus")
 guests.append("William Shakespeare")
 for guest in guests:
     print(guest)
+print(f"I'm inviting {len(guests)} guests.")
 print("Alas, there is only room for two. :(")
 while len(guests) > 2:
     print(f"Dear {guests.pop()}, I'm sorry but I can't invite you to dinner.")
