@@ -1,5 +1,6 @@
 def filter_solutions():
-    with open("solutions.csv") as sol_file, open("correct.csv", "w") as corr_file, open("incorrect.csv", "w") as inc_file:
+    with open("solutions.csv") as sol_file, open("correct.csv", "w")\
+            as corr_file, open("incorrect.csv", "w") as inc_file:
         correct = False  # holds the result of test for correct answers
         for row in sol_file:
             split = row.split(";")
