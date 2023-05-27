@@ -23,18 +23,33 @@ def get_final_grade(points: int) -> int:
 # student_file = input("Student information: ")
 # exercises_file = input("Exercises completed: ")
 # exam_file = input("Exam points: ")
-student_file = "students1.csv"
-exercises_file = "exercises1.csv"
-exam_file = "exam_points1.csv"
-course = "Introduction to Programming"
-credits = 5
-header = f"{course}, {credits} credits"
-print(f"{header}\n{'=' * len(header)}")
-headers = ["name", "exec_nbr", "exec_pts.", "exm_pts.", "tot_pts.", "grade"]
-print(f"{headers[0]:30}", end="")
-print("".join(f"{header:10}" for header in headers[1:]))
-for id, name in read_file(student_file, "students").items():
-    exerc = sum(read_file(exercises_file)[id])
-    exams = sum(read_file(exam_file)[id])
-    print(f"{name:30}{exerc:<10}{exerc // 4:<10}{exams:<10}"
-          f"{exerc // 4 + exams:<10}{get_final_grade(exerc // 4 + exams):<10}")
+# course_file = input("Course information: ")
+student_file = "students2.csv"
+exercises_file = "exercises2.csv"
+exam_file = "exam_points2.csv"
+course_file = "course2.txt"
+with open("course1.txt") as course_file:
+    course = course_file.readline().split(":")[1].strip()
+    print(course)
+    credits = int(course_file.readline().split(":")[1])
+with open("results.txt", "w") as res_txt, open("results.csv", "w") as res_csv:
+    header = f"{course}, {credits} credits"
+    res_txt.write(f"{header}\n{'=' * len(header)}\n")
+    headers = ["name", "exec_nbr", "exec_pts.",
+               "exm_pts.", "tot_pts.", "grade"]
+    res_txt.write(f"{headers[0]:30}")
+    res_txt.write("".join(f"{header:10}" for header in headers[1:]))
+    for id, name in read_file(student_file, "students").items():
+        exerc = sum(read_file(exercises_file)[id])
+        exams = sum(read_file(exam_file)[id])
+        res_txt.write(f"\n{name:30}{exerc:<10}{exerc//4:<10}{exams:<10}"
+                      f"{exerc//4 + exams:<10}"
+                      f"{get_final_grade(exerc//4 + exams):<10}")
+        res_csv.write(f"{id};{name};{get_final_grade(exerc//4 + exams)}\n")
+print("Results written to files results.txt and results.csv")
+
+
+#students2.csv
+#exercises2.csv
+#exam_points2.csv
+#course2.txt
