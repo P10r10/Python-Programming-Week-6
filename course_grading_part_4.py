@@ -20,14 +20,10 @@ def get_final_grade(points: int) -> int:
     return 5
 
 
-# student_file = input("Student information: ")
-# exercises_file = input("Exercises completed: ")
-# exam_file = input("Exam points: ")
-# course_file = input("Course information: ")
-student_file = "students2.csv"
-exercises_file = "exercises2.csv"
-exam_file = "exam_points2.csv"
-course_file = "course2.txt"
+student_file = input("Student information: ")
+exercises_file = input("Exercises completed: ")
+exam_file = input("Exam points: ")
+course_file = input("Course information: ")
 with open("course1.txt") as course_file:
     course = course_file.readline().split(":")[1].strip()
     print(course)
@@ -47,9 +43,3 @@ with open("results.txt", "w") as res_txt, open("results.csv", "w") as res_csv:
                       f"{get_final_grade(exerc//4 + exams):<10}")
         res_csv.write(f"{id};{name};{get_final_grade(exerc//4 + exams)}\n")
 print("Results written to files results.txt and results.csv")
-
-
-#students2.csv
-#exercises2.csv
-#exam_points2.csv
-#course2.txt
