@@ -15,10 +15,19 @@ def find_words(search_term: str) -> list:
     return result
 
 
-word = "p.ng."
-# for c in range(97, 123):
-#     print(word.replace(".", chr(c), 1))
-    # if "."
+# print(find_words("*ulet"))
+words = [".."]
+
+for c in range(97, 123):
+    words.append(words[0].replace(".", chr(c), 1))
+# del(words[0])
+words.remove("..")
+for word in words:
+    if "." in word:
+        for c in range(97, 123):
+            words.append(word.replace(".", chr(c), 1))
+        words.remove(word)
+print(words)       
 
 # for letter in word:
 #     if letter == ".":
