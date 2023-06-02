@@ -14,11 +14,11 @@ def find_words(search_term: str) -> list:
             or (word.startswith(split[0])
                 and len(word) == len(search_term))
                 and word.endswith(split[-1])
-                and split[1] == word[len(split[1]) + 1]
+                and split[1] == word[len(split[0]) + 1: len(split[0]) + 1 + len(split[1])]
         ):
             result.append(word)
+
     return result
 
 
 print(find_words("c.d."))
-
